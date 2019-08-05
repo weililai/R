@@ -5,6 +5,9 @@ print("This is a small program that can calculate the sound insulation of double
 # 引入math库，用于引用数学函数来运算（主要是为了使用log函数）。
 import math
 
+import numpy as np
+import matplotlib.pyplot as plt
+
 # 倍频带和1/3倍频带各带的中心频率
 octave_band = [125,250,500,1000,2000,4000]
 one_third_octave_band = [100,125,160,200,250,315,400,500,630,800,1000,1250,1600,2000,2500,3150,]
@@ -54,3 +57,13 @@ p3 = 'Sound insulation when the interlayer is sound insulation material and the 
 print(p1)
 print(p2)
 print(p3)
+# 作隔声量与频率的关系图
+plt.plot(Frequency, Rair, label='Rair')
+plt.plot(Frequency, Rtot, label='Rtot')
+plt.plot(Frequency, Rtot_with_gasket, label='Rtot_with_gasket')
+plt.legend() # 给曲线添加图例
+plt.xlabel('Frequency / Hz')
+plt.ylabel('R / dB')
+plt.title("Sound insulation R")
+plt.xticks(Frequency)
+plt.show()
